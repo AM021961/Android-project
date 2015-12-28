@@ -30,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                name1[a] = et1.getText().toString();
+                //name1[a] = et1.getText().toString();
                 name = name + et1.getText().toString();
                 name = name + "、";
                 tv1.setText(name);
-                a++;
+                //a++;
             }
         });
 
