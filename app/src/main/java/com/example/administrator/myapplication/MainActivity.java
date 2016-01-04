@@ -9,13 +9,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.HashSet;
+
 public class MainActivity extends AppCompatActivity {
 
-    Button bt1,bt2;
+    Button bt1,bt2,bt3;
     EditText et1;
     TextView tv1;
     String name="";
+    String temp="";
     String[] name1 = {};
+    Object[] tempArray ;
+    HashSet<String> name2 = new HashSet<String>();
     int a=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,26 +29,41 @@ public class MainActivity extends AppCompatActivity {
 
         bt1 = (Button)findViewById(R.id.Button1);
         bt2 = (Button)findViewById(R.id.Button2);
+        bt3 = (Button)findViewById(R.id.Button3);
         et1 = (EditText)findViewById(R.id.EditText);
         tv1 = (TextView)findViewById(R.id.TextView3);
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //name1[a] = et1.getText().toString();
-                name = name + et1.getText().toString();
-                name = name + "、";
+                if(name2.add(et1.getText().toString())) {
+                    name = name + et1.getText().toString();
+                    name = name + "、";
+                }
                 tv1.setText(name);
-                //a++;
+                System.out.println(name2);
             }
         });
 
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                tempArray = name2.toArray();
             }
         });
+
+        bt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(name2.remove(et1.getText().toString())){
+                    temp = et1.getText().toString()+"、";
+                    name = name.replace(temp,"");
+                }
+                tv1.setText(name);
+            }
+        });
+
+
 
     }
 

@@ -20,13 +20,24 @@
         android:layout_below="@+id/EditText"
         android:layout_alignEnd="@id/EditText"/>
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="刪除"
+        android:id="@+id/Button3"
+        android:layout_toLeftOf="@+id/Button2"
+        android:layout_below="@+id/EditText"/>
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="確定"
         android:id="@+id/Button1"
-        android:layout_toLeftOf="@id/Button2"
+        android:layout_toLeftOf="@id/Button3"
         android:layout_below="@+id/EditText"/>
+
 
     <EditText
         android:layout_width="fill_parent"
