@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.HashSet;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     String[] name1 = {};
     Object[] tempArray ;
     HashSet<String> name2 = new HashSet<String>();
-    int a=0;
+    Random rd = new Random();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 if(name2.add(et1.getText().toString())) {
                     name = name + et1.getText().toString();
                     name = name + "、";
+                    tempArray = name2.toArray();
                 }
+                et1.setText("");
                 tv1.setText(name);
                 System.out.println(name2);
             }
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tempArray = name2.toArray();
+                tv1.setText(tempArray[rd.nextInt(tempArray.length)].toString());
             }
         });
 
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 if(name2.remove(et1.getText().toString())){
                     temp = et1.getText().toString()+"、";
                     name = name.replace(temp,"");
+                    tempArray = name2.toArray();
                 }
                 tv1.setText(name);
             }
